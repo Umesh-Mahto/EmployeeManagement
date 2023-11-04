@@ -18,16 +18,16 @@ public class EmployeesController {
         return "hello umesh";
     }
     @PostMapping("/createEmployees")
-    public ResponseEntity<String>createEmployees(@RequestBody Employees employees){
+    public String createEmployees(@RequestBody Employees employees){
         return employeesService.createEmployees(employees);
     }
    @GetMapping("/getAllEmployees")
     public List<Employees> getAllEmployees(){
         return employeesService.getAllEmployees();
    }
-   @PutMapping("/updateEmployees/{id}")
-    public ResponseEntity<String>updateEmployees(@PathVariable Long id,@RequestBody Employees employees){
-        return employeesService.updateEmployees(id,employees);
+   @PutMapping("/updateEmployees")
+    public String updateEmployees(@RequestBody Employees employees){
+        return employeesService.updateEmployees(employees);
    }
    @DeleteMapping("/deleteById/{id}")
     public  String deleteById(@PathVariable long id){

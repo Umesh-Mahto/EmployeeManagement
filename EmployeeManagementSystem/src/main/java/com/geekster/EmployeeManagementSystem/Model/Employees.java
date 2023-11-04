@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.security.Timestamp;
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,14 +30,14 @@ public class Employees {
     @Email
     private String email;
 
-    @Column(name = "phone_number")
-    @Length(min = 10,max = 12,message = "enter valid number")
-    private String phoneNumber;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_department")
+    private Department department;
 
-    @Column(name = "job_role")
-    private String jobRole;
 
-    @Column(name = "salary")
-    private int salary;
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
 
 }
